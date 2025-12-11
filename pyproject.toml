@@ -4,12 +4,13 @@ version = "0.1.0"
 description = "Multi-Objective Bayesian Optimization over High-Dimensional Search Spaces"
 readme = "README.md"
 requires-python = "~=3.10.0"
-license = { text = "MIT" }
+license = "MIT"
 
 dependencies = [
     "torch==2.2.2",
     "gpytorch==1.11",
     "botorch==0.9.3",
+    "numpy<2",
     "scipy",
     "jupyter",
     "matplotlib",
@@ -22,3 +23,12 @@ dev = [
     "pytest",
     "coverage",
 ]
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["morbo*"]
+exclude = ["experiments*"]
