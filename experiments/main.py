@@ -7,6 +7,10 @@
 r"""
 The main script for running a single replication.
 """
+import warnings
+from botorch.exceptions.warnings import InputDataWarning
+warnings.filterwarnings("ignore", category=InputDataWarning)
+
 import os
 import sys
 from morbo.run_one_replication import run_one_replication

@@ -1,0 +1,24 @@
+[project]
+name = "morbo"
+version = "0.1.0"
+description = "Multi-Objective Bayesian Optimization over High-Dimensional Search Spaces"
+readme = "README.md"
+requires-python = "~=3.10.0"
+license = { text = "MIT" }
+
+dependencies = [
+    "torch==2.2.2",
+    "gpytorch==1.11",
+    "botorch==0.9.3",
+    "scipy",
+    "jupyter",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "pytest",
+    "coverage",
+]

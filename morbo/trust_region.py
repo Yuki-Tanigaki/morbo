@@ -15,7 +15,13 @@ from abc import abstractmethod, abstractproperty, ABC
 from typing import Any, Callable, Dict, List, Optional, Union
 
 import torch
-from botorch.acquisition.objective import AcquisitionObjective
+from torch.nn import Module
+try:
+    # 古い BoTorch の場合（AcquisitionObjective が存在する）
+    from botorch.acquisition.objective import AcquisitionObjective
+except ImportError:
+    # 新しめの BoTorch の場合：MCAcquisitionObjective をそのままベースとして使う
+    from botorch.acquisition.objective import MCAcquisitionObjective as AcquisitionObjective
 from botorch.models.transforms.input import (
     ChainedInputTransform,
     Normalize,

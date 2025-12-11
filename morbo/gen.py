@@ -302,13 +302,18 @@ def TS_select_batch_MORBO(trbo_state: TRBOState) -> CandidateSelectionOutput:
                             f=get_batched_objective_samples,
                             num_outputs=f_obj_better_than_ref.shape[-1],
                         )
+                        # acqf = qExpectedHypervolumeImprovement(
+                        #     model=sampled_model,
+                        #     ref_point=ref_point,
+                        #     partitioning=partitioning,
+                        #     sampler=SobolQMCNormalSampler(
+                        #         num_samples=1
+                        #     ),  # dummy sampler
+                        # )
                         acqf = qExpectedHypervolumeImprovement(
                             model=sampled_model,
                             ref_point=ref_point,
-                            partitioning=partitioning,
-                            sampler=SobolQMCNormalSampler(
-                                num_samples=1
-                            ),  # dummy sampler
+                            partitioning=partitioning,        
                         )
                         with torch.no_grad():
                             # add a q-batch dimension to compute HVI for each
